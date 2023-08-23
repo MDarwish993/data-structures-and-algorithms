@@ -78,6 +78,38 @@ public class LinkedList {
             current.next = newNode;
         }
     }
+
+
+    public int kthFromEnd(int k) {
+        if (k < 0) {
+            throw new IllegalArgumentException("k must be a non-negative integer");
+        }
+
+        Node slow = head;
+        Node fast = head;
+
+
+        for (int i = 0; i < k; i++) {
+            if (fast == null) {
+                throw new IllegalArgumentException("k is greater than the length of the linked list");
+            }
+            fast = fast.next;
+        }
+
+
+        while (fast != null) {
+            slow = slow.next;
+            fast = fast.next;
+        }
+
+        if (slow == null) {
+            throw new IllegalArgumentException("k is greater than the length of the linked list");
+        }
+
+        return slow.value;
+    }
+
+
     @Override
     public String toString() {
         StringBuilder result = new StringBuilder();
@@ -89,4 +121,6 @@ public class LinkedList {
         result.append("NULL");
         return result.toString();
     }
+
+
 }

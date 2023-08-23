@@ -18,6 +18,7 @@ Space Complexity: O(1) for each method.
 append: Adds a new node to the end of the list.
 insertBefore: Inserts a new node before a given target value.
 insertAfter: Inserts a new node after a given target value.
+kthFromEnd:Return the node’s value that is k places from the tail of the linked list.
 Approach: These methods also involve traversing the linked list linearly, either to find the last node or to locate the target node.
 
 Time Complexity: O(n), where n is the number of nodes in the linked list.
@@ -45,5 +46,7 @@ LinkedList linkedList = new LinkedList();
 
         linkedList.insertAfter(7, 8);
         System.out.println("After Insert After: " + linkedList);
+
+        System.out.println("kthFromEnd 0 : "+ myLinkedList.kthFromEnd(0));
     }
 }
