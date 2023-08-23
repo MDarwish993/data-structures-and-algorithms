@@ -17,5 +17,6 @@ public class App {
         System.out.println("Linked List: " + myLinkedList);
         System.out.println("Includes 7? " + myLinkedList.includes(7));
         System.out.println("Includes 5? " + myLinkedList.includes(5));
+
     }
 }

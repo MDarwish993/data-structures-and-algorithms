@@ -127,4 +127,46 @@ public class LinkedListTest {
 
         assertEquals("{ 5 } -> { 10 } -> { 15 } -> { 20 } -> NULL", linkedList.toString());
     }
+
+    @Test
+    public void testKthFromEndGreaterThanLength() {
+        LinkedList linkedList = new LinkedList();
+        linkedList.insert(5);
+        linkedList.insert(10);
+        linkedList.insert(15);
+
+        assertThrows(IllegalArgumentException.class, () -> linkedList.kthFromEnd(4));
+    }
+
+    @Test
+    public void testKthFromEndKEqualsLength() {
+        LinkedList linkedList = new LinkedList();
+        linkedList.insert(5);
+        linkedList.insert(10);
+        linkedList.insert(15);
+
+        assertThrows(IllegalArgumentException.class, () -> linkedList.kthFromEnd(4));
+    }
+
+    @Test
+    public void testKthFromEndNegativeK() {
+        LinkedList linkedList = new LinkedList();
+        linkedList.insert(5);
+        linkedList.insert(10);
+        linkedList.insert(15);
+
+        assertThrows(IllegalArgumentException.class, () -> linkedList.kthFromEnd(-1));
+    }
+
+
+    @Test
+    public void testKthFromEndHappyPath() {
+        LinkedList linkedList = new LinkedList();
+        linkedList.insert(1);
+        linkedList.insert(3);
+        linkedList.insert(8);
+        linkedList.insert(2);
+
+        assertEquals(3, linkedList.kthFromEnd(2));
+    }
 }
