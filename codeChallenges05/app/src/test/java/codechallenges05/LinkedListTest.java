@@ -169,4 +169,51 @@ public class LinkedListTest {
 
         assertEquals(3, linkedList.kthFromEnd(2));
     }
+
+    @Test
+    public void testZipLists() {
+        LinkedList list1 = new LinkedList();
+        list1.insert(1);
+        list1.insert(3);
+        list1.insert(2);
+
+        LinkedList list2 = new LinkedList();
+        list2.insert(5);
+        list2.insert(9);
+        list2.insert(4);
+
+        LinkedList zippedList = LinkedList.zipLists(list1, list2);
+        assertEquals("{ 2 } -> { 4 } -> { 3 } -> { 9 } -> { 1 } -> { 5 } -> NULL", zippedList.toString());
+    }
+
+    @Test
+    public void testZipListsWithDifferentLengths() {
+        LinkedList list1 = new LinkedList();
+        list1.insert(1);
+        list1.insert(3);
+
+        LinkedList list2 = new LinkedList();
+        list2.insert(5);
+        list2.insert(9);
+        list2.insert(4);
+
+        LinkedList zippedList = LinkedList.zipLists(list1, list2);
+        assertEquals("{ 3 } -> { 4 } -> { 1 } -> { 9 } -> { 5 } -> NULL", zippedList.toString());
+    }
+
+    @Test
+    public void testZipListsWithOneEmpty() {
+        LinkedList list1 = new LinkedList();
+        list1.insert(1);
+        list1.insert(3);
+        list1.insert(2);
+
+        LinkedList list2 = new LinkedList();
+
+        LinkedList zippedList = LinkedList.zipLists(list1, list2);
+        assertEquals("{ 2 } -> { 3 } -> { 1 } -> NULL", zippedList.toString());
+    }
+
+
+
 }

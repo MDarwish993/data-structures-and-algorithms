@@ -1,6 +1,7 @@
 # Challenge 05&06
 #### Linked list implimintaion
-
+## Picture of whiteboard
+<img src="C:\Users\C-ROAD\IdeaProjects\data-structures-and-algorithms\codeChallenges05\app\src\assets\cc08.jpg "/>
 ## Approach & Efficiency
 ### - Initial LinkedList Class Methods:
 
@@ -20,7 +21,7 @@ insertBefore: Inserts a new node before a given target value.
 insertAfter: Inserts a new node after a given target value.
 kthFromEnd:Return the node’s value that is k places from the tail of the linked list.
 Approach: These methods also involve traversing the linked list linearly, either to find the last node or to locate the target node.
-
+zipLists:Return New Linked List zipped together into one so that the nodes alternate between the two lists and return a reference to the the zipped list.
 Time Complexity: O(n), where n is the number of nodes in the linked list.
 
 Space Complexity: O(1) for each method.
