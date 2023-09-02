@@ -4,19 +4,49 @@
 package codechallenges05;
 
 import linkedListDataStructure.LinkedList;
+import stackDataStructure.Stack;
+import queueDataStructure.Queue;
 
 public class App {
 
 
     public static void main(String[] args) {
-        LinkedList myLinkedList=new LinkedList();
-        myLinkedList.insert(3);
-        myLinkedList.insert(7);
-        myLinkedList.insert(10);
+//        LinkedList myLinkedList=new LinkedList();
+//        myLinkedList.insert(3);
+//        myLinkedList.insert(7);
+//        myLinkedList.insert(10);
+//
+//        System.out.println("Linked List: " + myLinkedList);
+//        System.out.println("Includes 7? " + myLinkedList.includes(7));
+//        System.out.println("Includes 5? " + myLinkedList.includes(5));
 
-        System.out.println("Linked List: " + myLinkedList);
-        System.out.println("Includes 7? " + myLinkedList.includes(7));
-        System.out.println("Includes 5? " + myLinkedList.includes(5));
+
+        System.out.println("=============================================================");
+        Stack stack = new Stack();
+        stack.push(1);
+        System.out.println(stack.peek());
+        stack.push(2);
+        stack.push(3);
+        System.out.println(stack.pop());
+        System.out.println(stack.pop());
+        System.out.println(stack.isEmpty());
+        System.out.println(stack.pop());
+        System.out.println(stack.isEmpty());
+
+        System.out.println("=============================================================");
+
+        Queue queue = new Queue();
+        queue.enqueue(1);
+        System.out.println(queue.peek());
+        queue.enqueue(2);
+        queue.enqueue(3);
+        System.out.println(queue.dequeue());
+        System.out.println(queue.dequeue());
+        System.out.println(queue.isEmpty());
+        System.out.println(queue.dequeue());
+        System.out.println(queue.isEmpty());
 
     }
-}
+
+    }
+
