@@ -4,6 +4,7 @@
 package codechallenges05;
 
 import linkedListDataStructure.LinkedList;
+import queueDataStructure.PseudoQueue;
 import stackDataStructure.Stack;
 import queueDataStructure.Queue;
 
@@ -45,6 +46,14 @@ public class App {
         System.out.println(queue.isEmpty());
         System.out.println(queue.dequeue());
         System.out.println(queue.isEmpty());
+        System.out.println("=============================================================");
+        PseudoQueue pseudoQueue = new PseudoQueue();
+        pseudoQueue.enqueue(10);
+        pseudoQueue.enqueue(15);
+        pseudoQueue.enqueue(20);
+
+        System.out.println(pseudoQueue.dequeue());
+        System.out.println(pseudoQueue.dequeue());
 
     }
 
