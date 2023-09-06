@@ -4,9 +4,9 @@
 <img src="C:\Users\C-ROAD\IdeaProjects\data-structures-and-algorithms\codeChallenges05\app\src\assets\cc11.jpg "/>
 
 ### - Initial PseudoQueue Class Methods:
-enqueue:Inserts a value into the PseudoQueue, using a first-in, first-out approach.
+enqueue:Inserts a value into the PseudoQueue, using a first-in, first-out approach , O(1).
 
-dequeue:Extracts a value from the PseudoQueue, using a first-in, first-out approach.
+dequeue:Extracts a value from the PseudoQueue, using a first-in, first-out approach , O(n) in the worst case , O(1) on average.
 
 ## Solution
 public class Main {

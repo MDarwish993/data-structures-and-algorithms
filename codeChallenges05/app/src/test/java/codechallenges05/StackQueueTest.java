@@ -2,6 +2,7 @@ package codechallenges05;
 
 
 import org.junit.jupiter.api.Test;
+import queueDataStructure.PseudoQueue;
 import stackDataStructure.Stack;
 import queueDataStructure.Queue;
 import static org.junit.jupiter.api.Assertions.*;
@@ -49,4 +50,53 @@ public class StackQueueTest {
         assertThrows(RuntimeException.class, () -> queue.dequeue());
         assertThrows(RuntimeException.class, () -> queue.peek());
     }
+
+    @Test
+    void testEnqueueAndDequeue() {
+        PseudoQueue queue = new PseudoQueue();
+
+        assertTrue(queue.isEmpty());
+
+        queue.enqueue(10);
+        assertEquals(10, queue.dequeue());
+
+        queue.enqueue(15);
+        queue.enqueue(20);
+        assertEquals(15, queue.dequeue());
+        assertEquals(20, queue.dequeue());
+
+        assertTrue(queue.isEmpty());
+    }
+
+    @Test
+    void testEnqueueDequeueOrder() {
+        PseudoQueue queue = new PseudoQueue();
+        assertTrue(queue.isEmpty());
+
+        queue.enqueue(10);
+        queue.enqueue(15);
+        queue.enqueue(20);
+
+        assertEquals(10, queue.dequeue());
+        queue.enqueue(25);
+        assertEquals(15, queue.dequeue());
+        assertEquals(20, queue.dequeue());
+        assertEquals(25, queue.dequeue());
+
+        assertTrue(queue.isEmpty());
+    }
+
+    @Test
+    void testEmptyQueue() {
+        PseudoQueue queue = new PseudoQueue();
+        assertTrue(queue.isEmpty());
+
+        assertThrows(RuntimeException.class, () -> queue.dequeue());
+        assertTrue(queue.isEmpty());
+
+        queue.enqueue(10);
+        assertEquals(10, queue.dequeue());
+        assertTrue(queue.isEmpty());
+    }
+
 }
