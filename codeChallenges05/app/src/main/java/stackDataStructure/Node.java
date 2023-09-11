@@ -1,10 +1,10 @@
 package stackDataStructure;
 
-public class Node {
-    int value;
-    Node next;
+public class Node<T> {
+     T value;
+    Node<T> next;
 
-    public Node(int value) {
+    public Node(T value) {
         this.value = value;
         this.next = null;
     }

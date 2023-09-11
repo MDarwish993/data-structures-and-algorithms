@@ -2,6 +2,8 @@ package codechallenges05;
 
 
 import org.junit.jupiter.api.Test;
+import queueDataStructure.Animal;
+import queueDataStructure.AnimalShelter;
 import queueDataStructure.PseudoQueue;
 import stackDataStructure.Stack;
 import queueDataStructure.Queue;
@@ -98,5 +100,23 @@ public class StackQueueTest {
         assertEquals(10, queue.dequeue());
         assertTrue(queue.isEmpty());
     }
+
+
+
+    @Test
+    public void testEnqueueAndDequeueForAnimalShelter() {
+        AnimalShelter shelter = new AnimalShelter();
+
+        shelter.enqueue(new Animal("dog", "Buddy"));
+        shelter.enqueue(new Animal("cat", "Whiskers"));
+        shelter.enqueue(new Animal("dog", "Rex"));
+
+        assertEquals("Buddy", shelter.dequeue("dog").getName());
+        assertEquals("Whiskers", shelter.dequeue("cat").getName());
+        assertEquals("Rex", shelter.dequeue("dog").getName());
+
+        assertNull(shelter.dequeue("parrot")); // Invalid preference, should return null
+    }
+
 
 }
