@@ -118,5 +118,44 @@ public class StackQueueTest {
         assertNull(shelter.dequeue("parrot")); // Invalid preference, should return null
     }
 
+    @Test
+    void testBalancedBrackets() {
+        Stack stack= new Stack();
+        assertTrue(stack.validateBrackets("(a[bc])"));
+        assertTrue(stack.validateBrackets("a[b{c}]"));
+        assertTrue(stack.validateBrackets("a[b(c)d]e"));
+        assertTrue(stack.validateBrackets("a{b(c)d}e[f]"));
+
+        assertTrue(stack.validateBrackets("()"));
+        assertTrue(stack.validateBrackets("[]"));
+        assertTrue(stack.validateBrackets("{}"));
+        assertTrue(stack.validateBrackets("()[]{}"));
+        assertTrue(stack.validateBrackets("{[()]}"));
+    }
+
+    @Test
+    void testUnbalancedBrackets() {
+        Stack stack= new Stack();
+        assertFalse(stack.validateBrackets("(a[bc)"));
+        assertFalse(stack.validateBrackets("a{b(c]d}"));
+        assertFalse(stack.validateBrackets("a[b(c]d)e"));
+        assertFalse(stack.validateBrackets("a{b(c])d}"));
+
+        assertFalse(stack.validateBrackets("("));
+        assertFalse(stack.validateBrackets(")"));
+        assertFalse(stack.validateBrackets("["));
+        assertFalse(stack.validateBrackets("]"));
+        assertFalse(stack.validateBrackets("{"));
+        assertFalse(stack.validateBrackets("}"));
+        assertFalse(stack.validateBrackets("([)]"));
+        assertFalse(stack.validateBrackets("{[(])}"));
+    }
+
+    @Test
+    void testEmptyString() {
+        Stack stack= new Stack();
+        assertTrue(stack.validateBrackets(""));
+    }
+
 
 }
