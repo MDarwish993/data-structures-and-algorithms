@@ -1,7 +1,7 @@
 package stackDataStructure;
 
-public class Stack {
-    private Node top;
+public class Stack<T> {
+    private Node<T> top;
 
     public Stack() {
         this.top = null;
@@ -11,22 +11,22 @@ public class Stack {
         return top==null;
     }
 
-    public void push(int value){
-        Node newNode=new Node(value);
+    public void push(T value){
+        Node<T> newNode=new Node<>(value);
         newNode.next=top;
         top=newNode;
     }
 
-    public int pop(){
+    public T pop(){
         if(isEmpty()){
             throw new RuntimeException("Stack is empty");
         }
-        int removedValue=top.value;
+        T removedValue=top.value;
         top=top.next;
         return removedValue;
     }
 
-    public int peek(){
+    public T peek(){
         if (isEmpty()){
             throw new RuntimeException("Stack is empty");
         }

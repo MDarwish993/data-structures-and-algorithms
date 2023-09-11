@@ -1,8 +1,8 @@
 package queueDataStructure;
 
-public class Queue {
-    private Node front;
-    private Node back;
+public class Queue <T>{
+    private Node<T> front;
+    private Node<T> back;
 
     public Queue() {
         this.front = null;
@@ -13,8 +13,8 @@ public class Queue {
         return front==null;
     }
 
-    public void enqueue(int value){
-        Node newNode=new Node(value);
+    public void enqueue(T value){
+        Node<T> newNode=new Node<>(value);
         if (isEmpty()){
             front=newNode;
             back=newNode;
@@ -24,11 +24,11 @@ public class Queue {
         }
     }
 
-    public int dequeue(){
+    public T dequeue(){
         if (isEmpty()){
             throw new RuntimeException("Queue is empty");
         }
-        int removedValue= front.value;
+        T removedValue= front.value;
         if (front==back){
             front=null;
             back=null;
@@ -39,7 +39,7 @@ public class Queue {
         return removedValue;
     }
 
-    public int peek(){
+    public T peek(){
         if (isEmpty()){
             throw new RuntimeException("Queue is empty");
         }

@@ -1,21 +1,21 @@
 package queueDataStructure;
 import stackDataStructure.Stack;
-public class PseudoQueue {
-    private Stack stack1;
-    private Stack stack2;
+public class PseudoQueue<T> {
+    private Stack<T> stack1;
+    private Stack<T> stack2;
 
     public PseudoQueue() {
-        stack1 = new Stack();
-        stack2 = new Stack();
+        stack1 = new Stack<>();
+        stack2 = new Stack<>();
     }
 
 
-    public void enqueue(int value) {
+    public void enqueue(T value) {
         stack1.push(value);
     }
 
 
-    public int dequeue() {
+    public T dequeue() {
         if (isEmpty()) {
             throw new RuntimeException("Queue is empty");
         }
