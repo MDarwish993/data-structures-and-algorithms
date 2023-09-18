@@ -2,6 +2,8 @@ package codechallenges05;
 
 import org.junit.jupiter.api.Test;
 import treeDataStructure.BinarySearchTree;
+import treeDataStructure.BinaryTree;
+import treeDataStructure.Node;
 
 
 import java.util.ArrayList;
@@ -116,5 +118,31 @@ public class BinarySearchTreeTest {
         bst.add(7);
 
         assertFalse(bst.contains(12));
+    }
+
+
+
+    @Test
+    public void testSingleNodeTree() {
+        BinaryTree singleNodeTree = new BinaryTree();
+        singleNodeTree.root = new Node(20);
+        int max = singleNodeTree.findMax();
+        assertEquals(20, max);
+    }
+
+    @Test
+    public void testMultipleNodeTree() {
+        BinaryTree tree = new BinaryTree();
+        tree.root = new Node(2);
+        tree.root.setLiftChild(new Node(7));
+        tree.root.setRightChild(new Node(5));
+        tree.root.getLiftChild().setLiftChild(new Node(2));
+        tree.root.getLiftChild().setRightChild(new Node(6));
+        tree.root.getRightChild().setRightChild(new Node(9));
+        tree.root.getLiftChild().getRightChild().setLiftChild(new Node(5));
+        tree.root.getLiftChild().getRightChild().setRightChild(new Node(11));
+        tree.root.getRightChild().getRightChild().setLiftChild(new Node(4));
+        int max = tree.findMax();
+        assertEquals(11, max);
     }
 }
