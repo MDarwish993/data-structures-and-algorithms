@@ -12,6 +12,7 @@ public class BinaryTree {
     public BinaryTree(int rootValue) {
         root = new Node(rootValue);
     }
+
     public void preorderTraversal(Node node, List<Integer> traversal) {
         if (node != null) {
             traversal.add(node.getValue());
@@ -34,5 +35,23 @@ public class BinaryTree {
             postorderTraversal(node.getRightChild(), traversal);
             traversal.add(node.getValue());
         }
+    }
+
+    public int findMax() {
+        if (root == null) {
+            throw new IllegalStateException("The tree is empty");
+        }
+        return findMaxRecursive(root);
+    }
+
+    private int findMaxRecursive(Node node) {
+        if (node == null) {
+            return Integer.MIN_VALUE; // Return the smallest possible value for comparison
+        }
+
+        int leftMax = findMaxRecursive(node.getLiftChild());
+        int rightMax = findMaxRecursive(node.getRightChild());
+
+        return Math.max(Math.max(leftMax, rightMax), node.getValue());
     }
 }
