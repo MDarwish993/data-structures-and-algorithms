@@ -1,5 +1,6 @@
 package treeDataStructure;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class BinaryTree {
@@ -54,4 +55,31 @@ public class BinaryTree {
 
         return Math.max(Math.max(leftMax, rightMax), node.getValue());
     }
+
+    public List<Integer> breadthFirst() {
+        List<Integer> result = new ArrayList<>();
+        if (root == null) {
+            return result;
+        }
+
+        List<Node> treeValues = new ArrayList<>();
+        treeValues.add(root);
+
+        while (!treeValues.isEmpty()) {
+            Node current = treeValues.remove(0);
+            result.add(current.getValue());
+
+            if (current.getLiftChild() != null) {
+                treeValues.add(current.getLiftChild());
+            }
+
+            if (current.getRightChild() != null) {
+                treeValues.add(current.getRightChild());
+            }
+        }
+
+        return result;
+    }
+
+
 }

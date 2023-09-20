@@ -145,4 +145,34 @@ public class BinarySearchTreeTest {
         int max = tree.findMax();
         assertEquals(11, max);
     }
+
+
+
+    @Test
+    public void testMultipleNodeTreeBreadthFirstMethod() {
+        BinaryTree tree = new BinaryTree(2);
+
+        tree.root.setLiftChild(new Node(7));
+        tree.root.setRightChild(new Node(5)) ;
+        tree.root.getLiftChild().setLiftChild(new Node(2)) ;
+        tree.root.getLiftChild().setRightChild(new Node(6));
+        tree.root.getRightChild().setRightChild(new Node(9));
+        tree.root.getLiftChild().getRightChild().setLiftChild(new Node(5));
+        tree.root.getLiftChild().getRightChild().setRightChild(new Node(11));
+        tree.root.getRightChild().getRightChild().setLiftChild(new Node(4));
+
+        List<Integer> result = tree.breadthFirst();
+
+        assertEquals(9, result.size());
+        assertEquals(Integer.valueOf(2), result.get(0));
+        assertEquals(Integer.valueOf(7), result.get(1));
+        assertEquals(Integer.valueOf(5), result.get(2));
+        assertEquals(Integer.valueOf(2), result.get(3));
+        assertEquals(Integer.valueOf(6), result.get(4));
+        assertEquals(Integer.valueOf(9), result.get(5));
+        assertEquals(Integer.valueOf(5), result.get(6));
+        assertEquals(Integer.valueOf(11), result.get(7));
+        assertEquals(Integer.valueOf(4), result.get(8));
+
+    }
 }
