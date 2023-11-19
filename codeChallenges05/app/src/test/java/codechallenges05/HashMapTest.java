@@ -2,6 +2,10 @@ package codechallenges05;
 
 import hashMap.HashMap;
 import org.junit.jupiter.api.Test;
+
+import java.util.Arrays;
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 public class HashMapTest {
@@ -53,6 +57,32 @@ public class HashMapTest {
         for (int i = 0; i < 100; i++) {
             int hash = hashMap.hash("key" + i);
             assertTrue(hash >= 0 && hash < 16); // Assuming size is 16
+        }
+    }
+
+    @Test
+    public void testLeftJoin() {
+        HashMap<String, String> synonyms = new HashMap<>(16);
+        synonyms.set("happy", "joyful");
+        synonyms.set("sad", "unhappy");
+        synonyms.set("big", "large");
+
+        HashMap<String, String> antonyms = new HashMap<>(16);
+        antonyms.set("happy", "sad");
+        antonyms.set("big", "small");
+        antonyms.set("fast", "slow");
+
+        List<List<String>> expectedResult = Arrays.asList(
+                Arrays.asList("happy", "joyful", "sad"),
+                Arrays.asList("sad", "unhappy", null),
+                Arrays.asList("big", "large", "small"));
+
+        List<List<String>> result = HashMap.leftJoin(synonyms, antonyms);
+
+        assertEquals(expectedResult.size(), result.size(), "Result size should match expected size");
+
+        for (List<String> expectedRow : expectedResult) {
+            assertTrue(result.contains(expectedRow), "Result should contain expected row: " + expectedRow);
         }
     }
 }
