@@ -84,4 +84,29 @@ public class HashMap<K, V> {
     public int hash(K key) {
         return Math.abs(key.hashCode()) % size;
     }
+
+
+    public static List<List<String>> leftJoin(HashMap<String, String> synonyms, HashMap<String, String> antonyms) {
+        List<List<String>> results = new ArrayList<>();
+
+        for (String key : synonyms.keys()) {
+            List<String> row = new ArrayList<>();
+            row.add(key);
+            String synonym = synonyms.get(key);
+            if (synonym != null) {
+                row.add(synonym);
+            } else {row.add(null);}
+            String antonym = antonyms.get(key);
+            if (antonym != null) {
+                row.add(antonym);
+            } else {row.add(null);
+            }
+            results.add(row);
+        }
+
+        return results;
+    }
+
 }
+
+
