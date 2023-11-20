@@ -1,9 +1,6 @@
 package graphDataStructure;
 
-import java.util.HashMap;
-import java.util.LinkedList;
-
-import java.util.List;
+import java.util.*;
 
 public class Graph<T extends Comparable<? super T>> implements Comparable<Graph<T>> {
     public HashMap<Vertex<T>, LinkedList<Edge<T>>> adjacencyLists;
@@ -60,5 +57,33 @@ public class Graph<T extends Comparable<? super T>> implements Comparable<Graph<
                 "adjacencyLists=" + adjacencyLists +
                 ", numberOfVertices=" + numberOfVertices +
                 '}';
+    }
+
+    public List<Vertex<T>> breadthFirst(Vertex<T> start) {
+        List<Vertex<T>> visitedNodes = new ArrayList<>();
+        if (start == null || !adjacencyLists.containsKey(start)) {
+            return visitedNodes;
+        }
+
+        Queue<Vertex<T>> queue = new LinkedList<>();
+        HashMap<Vertex<T>, Boolean> visited = new HashMap<>();
+
+        queue.add(start);
+        visited.put(start, true);
+
+        while (!queue.isEmpty()) {
+            Vertex<T> current = queue.poll();
+            visitedNodes.add(current);
+
+            for (Edge<T> neighborEdge : adjacencyLists.get(current)) {
+                Vertex<T> neighbor = neighborEdge.destination;
+                if (!visited.containsKey(neighbor) || !visited.get(neighbor)) {
+                    visited.put(neighbor, true);
+                    queue.add(neighbor);
+                }
+            }
+        }
+
+        return visitedNodes;
     }
 }
