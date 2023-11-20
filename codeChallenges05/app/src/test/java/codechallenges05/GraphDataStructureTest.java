@@ -60,4 +60,54 @@ class GraphDataStructureTest {
         assertTrue(vertices.contains(vertex2));
         assertTrue(vertices.contains(vertex3));
     }
+
+    @Test
+    public void testBreadthFirstTraversalSingleNode() {
+        Graph<String> graph = new Graph<>(1);
+        Vertex<String> node = graph.addVertex("Node");
+        List<Vertex<String>> traversalResult = graph.breadthFirst(node);
+
+        assertEquals(1, traversalResult.size());
+        assertEquals(node, traversalResult.get(0));
+    }
+
+    @Test
+    public void testBreadthFirstTraversalDisconnectedNodes() {
+        Graph<Integer> graph = new Graph<>(5);
+        Vertex<Integer> node1 = graph.addVertex(1);
+        Vertex<Integer> node2 = graph.addVertex(2);
+        Vertex<Integer> node3 = graph.addVertex(3);
+
+        List<Vertex<Integer>> traversalResult = graph.breadthFirst(node1);
+
+        assertEquals(1, traversalResult.size());
+        assertEquals(node1, traversalResult.get(0));
+    }
+
+    @Test
+    public void testBreadthFirstTraversalComplexGraph() {
+        Graph<Character> graph = new Graph<>(6);
+        Vertex<Character> nodeA = graph.addVertex('A');
+        Vertex<Character> nodeB = graph.addVertex('B');
+        Vertex<Character> nodeC = graph.addVertex('C');
+        Vertex<Character> nodeD = graph.addVertex('D');
+        Vertex<Character> nodeE = graph.addVertex('E');
+        Vertex<Character> nodeF = graph.addVertex('F');
+
+        graph.addEdge(nodeA, nodeB);
+        graph.addEdge(nodeA, nodeC);
+        graph.addEdge(nodeB, nodeD);
+        graph.addEdge(nodeB, nodeE);
+        graph.addEdge(nodeC, nodeF);
+
+        List<Vertex<Character>> traversalResult = graph.breadthFirst(nodeA);
+
+        assertEquals(6, traversalResult.size());
+        assertEquals(nodeA, traversalResult.get(0));
+        assertEquals(nodeB, traversalResult.get(1));
+        assertEquals(nodeC, traversalResult.get(2));
+        assertEquals(nodeD, traversalResult.get(3));
+        assertEquals(nodeE, traversalResult.get(4));
+        assertEquals(nodeF, traversalResult.get(5));
+    }
 }
