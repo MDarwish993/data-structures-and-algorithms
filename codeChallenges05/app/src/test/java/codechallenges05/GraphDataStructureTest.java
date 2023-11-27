@@ -110,4 +110,28 @@ class GraphDataStructureTest {
         assertEquals(nodeE, traversalResult.get(4));
         assertEquals(nodeF, traversalResult.get(5));
     }
+
+    @Test
+    void businessTripTest() {
+        Graph<String> cityGraph = new Graph<>(10);
+
+        Vertex<String> cityA = cityGraph.addVertex("CityA");
+        Vertex<String> cityB = cityGraph.addVertex("CityB");
+        Vertex<String> cityC = cityGraph.addVertex("CityC");
+
+        cityGraph.addEdge(cityA, cityB, 100);
+        cityGraph.addEdge(cityB, cityC, 150);
+
+        String[] tripCities1 = {"CityA", "CityB", "CityC"};
+        Integer tripCost1 = Graph.businessTrip(cityGraph, tripCities1);
+        assertEquals(250, tripCost1);
+
+        String[] tripCities2 = {"CityA", "CityC"};
+        Integer tripCost2 = Graph.businessTrip(cityGraph, tripCities2);
+        assertNull(tripCost2);
+
+        String[] tripCities3 = {"CityA"};
+        Integer tripCost3 = Graph.businessTrip(cityGraph, tripCities3);
+        assertNull(tripCost3);
+    }
 }
