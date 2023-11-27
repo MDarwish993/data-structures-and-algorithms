@@ -17,4 +17,8 @@ public class Edge<T extends Comparable<? super T>> implements Comparable<Vertex<
     public int compareTo(Vertex<T> o) {
         throw new UnsupportedOperationException("Edge does not implement compareTo()");
     }
+
+    public Vertex<T> getDestination() {
+        return destination;
+    }
 }

@@ -137,4 +137,30 @@ public class Graph<T extends Comparable<? super T>> implements Comparable<Graph<
         }
         return null;
     }
+
+
+
+
+    public List<Vertex<T>> depthFirst(Vertex<T> start) {
+        List<Vertex<T>> visitedNodes = new ArrayList<>();
+        Set<Vertex<T>> visited = new HashSet<>();
+
+        depthFirstTraversal(start, visited, visitedNodes);
+
+        return visitedNodes;
+    }
+
+    private void depthFirstTraversal(Vertex<T> current, Set<Vertex<T>> visited, List<Vertex<T>> visitedNodes) {
+        visited.add(current);
+        visitedNodes.add(current);
+
+        for (Edge<T> neighborEdge : adjacencyLists.get(current)) {
+            Vertex<T> neighbor = neighborEdge.destination;
+            if (!visited.contains(neighbor)) {
+                depthFirstTraversal(neighbor, visited, visitedNodes);
+            }
+        }
+    }
+
+
 }
