@@ -134,4 +134,32 @@ class GraphDataStructureTest {
         Integer tripCost3 = Graph.businessTrip(cityGraph, tripCities3);
         assertNull(tripCost3);
     }
+
+
+
+    @Test
+    public void testDepthFirstTraversal() {
+        Graph<String> graph = new Graph<>(10);
+
+        Vertex<String> vertexA = graph.addVertex("A");
+        Vertex<String> vertexB = graph.addVertex("B");
+        Vertex<String> vertexC = graph.addVertex("C");
+        Vertex<String> vertexD = graph.addVertex("D");
+        Vertex<String> vertexE = graph.addVertex("E");
+
+        graph.addEdge(vertexA, vertexB);
+        graph.addEdge(vertexA, vertexC);
+        graph.addEdge(vertexB, vertexD);
+        graph.addEdge(vertexC, vertexE);
+
+        List<Vertex<String>> depthFirstNodes = graph.depthFirst(vertexA);
+
+
+        assertEquals(5, depthFirstNodes.size());
+        assertEquals(vertexA, depthFirstNodes.get(0));
+        assertEquals(vertexB, depthFirstNodes.get(1));
+        assertEquals(vertexD, depthFirstNodes.get(2));
+        assertEquals(vertexC, depthFirstNodes.get(3));
+        assertEquals(vertexE, depthFirstNodes.get(4));
+    }
 }
